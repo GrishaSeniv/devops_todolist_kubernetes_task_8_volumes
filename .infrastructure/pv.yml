@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-data
+  namespace: todoapp
+spec:
+  # List of storage classes
+  #
+  # kubectl get storageclass
+  storageClassName: standard
+  # Це поле контролює, що має відбутись зі storage після того,
+  # як були видалені всі клейми на цей PersistentVolume. Є два можливих значення:
+  #
+  # - Retain означає, що сховище треба залишити для ручного видалення.
+  # - Delete означає, що сховище буде автоматично видалене.
+  persistentVolumeReclaimPolicy: Delete
+  # - ReadWriteOnce означає, що сховище може бути використане лише на одній ноді в кластері.
+  # - ReadWriteMany означає, що сховище може бути використане на різних нодах. Наші поди будуть на двох нодах і всі вони будуть читати з цього сховища і писати у це сховище, тому ми використаємо саме це значення.
+  # - ReadOnlyMany означає, що сховище можна використовувати в режимі читання з різних нод.
+  # - ReadWriteOncePod вийшло у бета-версії наприкінці 2023 року. Дозволяє лише одному поду на весь кластер використати сховище
+  accessModes:
+    - ReadWriteMany
+  # Обʼєм сховища:
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/
