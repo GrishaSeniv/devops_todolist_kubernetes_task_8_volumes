@@ -67,7 +67,19 @@ Stop forwarding (Ctrl + C) after testing.
 kubectl -n todoapp exec -it <todoapp-pod-name> -- sh
 ```
 
-2) List files in the /configs directory (or wherever you mounted it):
+2) Show current path:
+
+```bash
+pwd
+```
+
+output:
+
+```bash
+/app
+```
+
+3) List files in the /configs directory (or wherever you mounted it) using relative path:
 
 ```bash
 ls /configs
@@ -79,7 +91,7 @@ Expected result: Files matching keys from ConfigMap:
 PYTHONUNBUFFERED
 ```
 
-3) Check contents of the file:
+4) Check contents of the file:
 
 ```bash
 cat /configs/PYTHONUNBUFFERED
@@ -91,7 +103,7 @@ Expected output:
 1
 ```
 
-4) Exit the pod:
+5) Exit the pod:
 
 ```bash
 exit
@@ -105,7 +117,19 @@ exit
 kubectl -n todoapp exec -it <todoapp-pod-name> -- sh
 ```
 
-2) List files in the secrets directory:
+2) Show current path:
+
+```bash
+pwd
+```
+
+output:
+
+```bash
+/app
+```
+
+3) List files in the secrets directory using relative path:
 
 ```bash
 ls /secrets
@@ -117,7 +141,7 @@ Expected result:
 SECRET_KEY
 ```
 
-3) View the secret value:
+4) View the secret value:
 
 ```bash
 cat /secrets/SECRET_KEY
@@ -126,7 +150,7 @@ cat /secrets/SECRET_KEY
 Expected output:
 The decoded value of your SECRET_KEY
 
-4) Exit the pod:
+5) Exit the pod:
 
 ```bash
 exit
