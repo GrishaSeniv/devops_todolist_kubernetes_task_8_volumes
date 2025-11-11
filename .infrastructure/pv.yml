@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv-data
-  namespace: todoapp
+  # PersistentVolume is a cluster-scoped resource, which means it does not belong to any specific namespace.
 spec:
   # List of storage classes
   #

@@ -97,24 +97,6 @@ Expected output:
 exit
 ```
 
-## Validate that the application is running
-
-Forward the ClusterIP service and test access:
-
-```bash
-kubectl port-forward svc/todoapp-service 8081:80 -n todoapp
-```
-
-In a separate terminal:
-
-```bash
-curl localhost:8081
-```
-
-Expected result: Application home page or API response.
-
-Stop forwarding (Ctrl + C) after testing.
-
 ## Validate Secret is mounted as a file
 
 1) Connect to the running pod:
